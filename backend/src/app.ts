@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { FRONTEND_URL } from "./config/config.js";
+import { globalErrorHandler } from "./middlewares/error.middleware.js";
 
 export const app = express();
 
@@ -21,3 +22,9 @@ app.get("/api/v1/health-check", async (req: Request, res: Response) => {
     message: "Server is healthy",
   });
 });
+
+import authRouter from "./modules/auth/auth.route.js";
+
+app.use("/api/v1/auth", authRouter);
+
+app.use(globalErrorHandler);

@@ -12,7 +12,11 @@ model User {
   name          String    @unique
   email         String    @unique
   password      String
-  RefreshToken  RefreshToken[]
+
+  refreshToken  RefreshToken[]
+  post          Post[]
+  comment       Comment[]
+
   createdAt     DateTime  @default(now())
   updateddAt    DateTime  @default(now())
 }
@@ -22,7 +26,37 @@ model RefreshToken {
   token         String
   userId        String
 
-  User          User      @relation(fields: [userId], references: [id])
+  user          User      @relation(fields: [userId], references: [id])
 
   expiresAt     DateTime
+}
+
+model Post {
+  id            String    @id @default(uuid())
+  title         String
+  description   String
+  imageUrl      String?
+
+  userId        String
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now())
+
+  comment       Comment[]
+
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id            String    @id @default(uuid())
+  Comment       String
+
+  postId        String
+  userId        String
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now())
+
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post          Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
