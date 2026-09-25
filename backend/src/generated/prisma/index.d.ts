@@ -1258,58 +1258,58 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: string | null
-    name: string | null
+    username: string | null
     email: string | null
     password: string | null
     createdAt: Date | null
-    updateddAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
-    name: string | null
+    username: string | null
     email: string | null
     password: string | null
     createdAt: Date | null
-    updateddAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
-    name: number
+    username: number
     email: number
     password: number
     createdAt: number
-    updateddAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type UserMinAggregateInputType = {
     id?: true
-    name?: true
+    username?: true
     email?: true
     password?: true
     createdAt?: true
-    updateddAt?: true
+    updatedAt?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
-    name?: true
+    username?: true
     email?: true
     password?: true
     createdAt?: true
-    updateddAt?: true
+    updatedAt?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
-    name?: true
+    username?: true
     email?: true
     password?: true
     createdAt?: true
-    updateddAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -1387,11 +1387,11 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    name: string
+    username: string
     email: string
     password: string
     createdAt: Date
-    updateddAt: Date
+    updatedAt: Date
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1413,11 +1413,11 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
+    username?: boolean
     email?: boolean
     password?: boolean
     createdAt?: boolean
-    updateddAt?: boolean
+    updatedAt?: boolean
     refreshToken?: boolean | User$refreshTokenArgs<ExtArgs>
     post?: boolean | User$postArgs<ExtArgs>
     comment?: boolean | User$commentArgs<ExtArgs>
@@ -1426,32 +1426,32 @@ export namespace Prisma {
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
+    username?: boolean
     email?: boolean
     password?: boolean
     createdAt?: boolean
-    updateddAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
+    username?: boolean
     email?: boolean
     password?: boolean
     createdAt?: boolean
-    updateddAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
-    name?: boolean
+    username?: boolean
     email?: boolean
     password?: boolean
     createdAt?: boolean
-    updateddAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "createdAt" | "updateddAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "email" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     refreshToken?: boolean | User$refreshTokenArgs<ExtArgs>
     post?: boolean | User$postArgs<ExtArgs>
@@ -1470,11 +1470,11 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
+      username: string
       email: string
       password: string
       createdAt: Date
-      updateddAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1902,11 +1902,11 @@ export namespace Prisma {
    */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
-    readonly name: FieldRef<"User", 'String'>
+    readonly username: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
-    readonly updateddAt: FieldRef<"User", 'DateTime'>
+    readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -5659,11 +5659,11 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    name: 'name',
+    username: 'username',
     email: 'email',
     password: 'password',
     createdAt: 'createdAt',
-    updateddAt: 'updateddAt'
+    updatedAt: 'updatedAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -5783,11 +5783,11 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    name?: StringFilter<"User"> | string
+    username?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
-    updateddAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
     refreshToken?: RefreshTokenListRelationFilter
     post?: PostListRelationFilter
     comment?: CommentListRelationFilter
@@ -5795,11 +5795,11 @@ export namespace Prisma {
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
+    username?: SortOrder
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
-    updateddAt?: SortOrder
+    updatedAt?: SortOrder
     refreshToken?: RefreshTokenOrderByRelationAggregateInput
     post?: PostOrderByRelationAggregateInput
     comment?: CommentOrderByRelationAggregateInput
@@ -5807,26 +5807,26 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    name?: string
+    username?: string
     email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     password?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
-    updateddAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
     refreshToken?: RefreshTokenListRelationFilter
     post?: PostListRelationFilter
     comment?: CommentListRelationFilter
-  }, "id" | "name" | "email">
+  }, "id" | "username" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
+    username?: SortOrder
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
-    updateddAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -5837,11 +5837,11 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    name?: StringWithAggregatesFilter<"User"> | string
+    username?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updateddAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
   export type RefreshTokenWhereInput = {
@@ -6027,11 +6027,11 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     id?: string
-    name: string
+    username: string
     email: string
     password: string
     createdAt?: Date | string
-    updateddAt?: Date | string
+    updatedAt?: Date | string
     refreshToken?: RefreshTokenCreateNestedManyWithoutUserInput
     post?: PostCreateNestedManyWithoutUserInput
     comment?: CommentCreateNestedManyWithoutUserInput
@@ -6039,11 +6039,11 @@ export namespace Prisma {
 
   export type UserUncheckedCreateInput = {
     id?: string
-    name: string
+    username: string
     email: string
     password: string
     createdAt?: Date | string
-    updateddAt?: Date | string
+    updatedAt?: Date | string
     refreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     post?: PostUncheckedCreateNestedManyWithoutUserInput
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
@@ -6051,11 +6051,11 @@ export namespace Prisma {
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateddAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshToken?: RefreshTokenUpdateManyWithoutUserNestedInput
     post?: PostUpdateManyWithoutUserNestedInput
     comment?: CommentUpdateManyWithoutUserNestedInput
@@ -6063,11 +6063,11 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateddAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshToken?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     post?: PostUncheckedUpdateManyWithoutUserNestedInput
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
@@ -6075,29 +6075,29 @@ export namespace Prisma {
 
   export type UserCreateManyInput = {
     id?: string
-    name: string
+    username: string
     email: string
     password: string
     createdAt?: Date | string
-    updateddAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateddAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateddAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RefreshTokenCreateInput = {
@@ -6340,29 +6340,29 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    username?: SortOrder
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
-    updateddAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    username?: SortOrder
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
-    updateddAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    name?: SortOrder
+    username?: SortOrder
     email?: SortOrder
     password?: SortOrder
     createdAt?: SortOrder
-    updateddAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -7031,22 +7031,22 @@ export namespace Prisma {
 
   export type UserCreateWithoutRefreshTokenInput = {
     id?: string
-    name: string
+    username: string
     email: string
     password: string
     createdAt?: Date | string
-    updateddAt?: Date | string
+    updatedAt?: Date | string
     post?: PostCreateNestedManyWithoutUserInput
     comment?: CommentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRefreshTokenInput = {
     id?: string
-    name: string
+    username: string
     email: string
     password: string
     createdAt?: Date | string
-    updateddAt?: Date | string
+    updatedAt?: Date | string
     post?: PostUncheckedCreateNestedManyWithoutUserInput
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
   }
@@ -7069,22 +7069,22 @@ export namespace Prisma {
 
   export type UserUpdateWithoutRefreshTokenInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateddAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     post?: PostUpdateManyWithoutUserNestedInput
     comment?: CommentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRefreshTokenInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateddAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     post?: PostUncheckedUpdateManyWithoutUserNestedInput
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -7117,22 +7117,22 @@ export namespace Prisma {
 
   export type UserCreateWithoutPostInput = {
     id?: string
-    name: string
+    username: string
     email: string
     password: string
     createdAt?: Date | string
-    updateddAt?: Date | string
+    updatedAt?: Date | string
     refreshToken?: RefreshTokenCreateNestedManyWithoutUserInput
     comment?: CommentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPostInput = {
     id?: string
-    name: string
+    username: string
     email: string
     password: string
     createdAt?: Date | string
-    updateddAt?: Date | string
+    updatedAt?: Date | string
     refreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     comment?: CommentUncheckedCreateNestedManyWithoutUserInput
   }
@@ -7171,44 +7171,44 @@ export namespace Prisma {
 
   export type UserUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateddAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshToken?: RefreshTokenUpdateManyWithoutUserNestedInput
     comment?: CommentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateddAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshToken?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutCommentInput = {
     id?: string
-    name: string
+    username: string
     email: string
     password: string
     createdAt?: Date | string
-    updateddAt?: Date | string
+    updatedAt?: Date | string
     refreshToken?: RefreshTokenCreateNestedManyWithoutUserInput
     post?: PostCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentInput = {
     id?: string
-    name: string
+    username: string
     email: string
     password: string
     createdAt?: Date | string
-    updateddAt?: Date | string
+    updatedAt?: Date | string
     refreshToken?: RefreshTokenUncheckedCreateNestedManyWithoutUserInput
     post?: PostUncheckedCreateNestedManyWithoutUserInput
   }
@@ -7256,22 +7256,22 @@ export namespace Prisma {
 
   export type UserUpdateWithoutCommentInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateddAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshToken?: RefreshTokenUpdateManyWithoutUserNestedInput
     post?: PostUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updateddAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     refreshToken?: RefreshTokenUncheckedUpdateManyWithoutUserNestedInput
     post?: PostUncheckedUpdateManyWithoutUserNestedInput
   }
