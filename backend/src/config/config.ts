@@ -14,3 +14,7 @@ export const JWT_ACCESS_TOKEN_EXPIRY = process.env
   .JWT_ACCESS_TOKEN_EXPIRY as string;
 export const JWT_REFRESH_TOKEN_EXPIRY = process.env
   .JWT_REFRESH_TOKEN_EXPIRY as string;
+
+export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;
+export const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY;
+export const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET;

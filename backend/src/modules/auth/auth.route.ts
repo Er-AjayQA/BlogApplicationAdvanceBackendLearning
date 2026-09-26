@@ -14,7 +14,7 @@ import {
   registerUserSchema,
 } from "./auth.schema.js";
 import { verifyUser } from "../../middlewares/auth.middleware.js";
-import { authService } from "./container.js";
+import { authService } from "./auth.container.js";
 
 const router = express.Router();
 

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { catchAsync } from "../../utils/CatchAsync.js";
 import { sendResponse } from "../../utils/sendResponse.js";
-import { authService } from "./container.js";
+import { authService } from "./auth.container.js";
 import { destroyCookies, setCookies } from "../../utils/auth.helper.js";
 
 export const registerUserController = catchAsync(
