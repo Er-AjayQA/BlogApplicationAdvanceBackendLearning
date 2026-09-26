@@ -14,3 +14,13 @@ export const uploadToCloudinary = async (localFilePath: string) => {
     fs.unlinkSync(localFilePath);
   }
 };
+
+export const removeFromCloudinary = async (imageUrl: string) => {
+  try {
+    const publicId = imageUrl.split("/").pop()?.split(".")[0] as string;
+    const response = await cloudinary.uploader.destroy(publicId);
+    return response;
+  } catch (error) {
+    console.log("Error while removing image from cloudinary: ", error);
+  }
+};
