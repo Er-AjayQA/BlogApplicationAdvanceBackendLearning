@@ -1,61 +1,60 @@
 import { prisma } from "../../lib/prisma.js";
+import { IAuthRepository } from "./auth.interface.js";
 
-export const authRepository = {
-  findUserByUsername: async (username: string) => {
-    const user = await prisma.user.findUnique({ where: { username } });
-
-    return user;
-  },
-
-  findUserByEmail: async (email: string) => {
-    const user = await prisma.user.findUnique({ where: { email } });
-    return user;
-  },
-
-  findUserById: async (id: string) => {
+export class AuthRepository implements IAuthRepository {
+  async findUserById(id: string) {
     const user = await prisma.user.findUnique({ where: { id } });
     return user;
-  },
+  }
 
-  createUser: async (username: string, email: string, password: string) => {
+  async findUserByUsername(username: string) {
+    const user = await prisma.user.findUnique({ where: { username } });
+    return user;
+  }
+
+  async findUserByEmail(email: string) {
+    const user = await prisma.user.findUnique({ where: { email } });
+    return user;
+  }
+
+  async createUser(username: string, email: string, password: string) {
     const createdUser = await prisma.user.create({
       data: { username, email, password },
     });
 
     return createdUser;
-  },
+  }
 
-  createRefreshToken: async (data: {
+  async createRefreshToken(data: {
     token: string;
     userId: string;
     expiresAt: Date;
-  }) => {
+  }) {
     const refreshToken = await prisma.refreshToken.create({ data });
-
     return refreshToken;
-  },
+  }
 
-  findRefreshToken: async (token: string) => {
+  async findRefreshToken(token: string) {
     const refreshToken = await prisma.refreshToken.findUnique({
       where: { token },
     });
 
     return refreshToken;
-  },
+  }
 
-  findRefreshTokenByUserId: async (userId: string) => {
+  async findRefreshTokenByUserId(userId: string) {
     return await prisma.refreshToken.findMany({ where: { userId } });
-  },
+  }
 
-  deleteRefreshTokenById: async (id: string) => {
+  async deleteRefreshTokenById(id: string) {
     return await prisma.refreshToken.delete({ where: { id } });
-  },
+  }
 
-  deleteRefreshTokenByToken: async (token: string) => {
+  async deleteRefreshTokenByToken(token: string) {
     return await prisma.refreshToken.delete({ where: { token } });
-  },
+  }
 
-  deleteAllRefreshTokenByUser: async (userId: string) => {
+  async deleteAllRefreshTokenByUser(userId: string) {
     return await prisma.refreshToken.deleteMany({ where: { userId } });
-  },
-};
+  }
+}

@@ -1,11 +1,14 @@
 import { NextFunction, Request, Response } from "express";
 import { catchAsync } from "../../utils/CatchAsync.js";
-import { authService } from "./auth.service.js";
 import { sendResponse } from "../../utils/sendResponse.js";
+import { authService } from "./container.js";
+import { destroyCookies, setCookies } from "../../utils/auth.helper.js";
 
 export const registerUserController = catchAsync(
   async (req: Request, res: Response) => {
     const result = await authService.registerUser(req.body);
+
+    setCookies(res, result.accessToken, result.refreshToken);
 
     sendResponse(res, 201, {
       success: true,
@@ -19,6 +22,8 @@ export const loginUserController = catchAsync(
   async (req: Request, res: Response) => {
     const result = await authService.loginUser(req.body);
 
+    setCookies(res, result.accessToken, result.refreshToken);
+
     sendResponse(res, 200, {
       success: true,
       message: "Logged in successfully",
@@ -30,6 +35,8 @@ export const loginUserController = catchAsync(
 export const refreshTokenController = catchAsync(
   async (req: Request, res: Response) => {
     const result = await authService.refreshToken(req.body);
+
+    setCookies(res, result.accessToken, result.refreshToken);
 
     sendResponse(res, 202, {
       success: true,
@@ -56,6 +63,8 @@ export const logoutController = catchAsync(
     const { refreshToken } = req.body;
     const result = await authService.logout(refreshToken);
 
+    destroyCookies(res);
+
     sendResponse(res, 200, {
       success: true,
       message: "Logged out successfully",
@@ -66,6 +75,8 @@ export const logoutController = catchAsync(
 export const logoutAllController = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const result = await authService.logoutAllDevices(req.userId as string);
+
+    destroyCookies(res);
 
     sendResponse(res, 200, {
       success: true,
