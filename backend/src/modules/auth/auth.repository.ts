@@ -12,6 +12,11 @@ export const authRepository = {
     return user;
   },
 
+  findUserById: async (id: string) => {
+    const user = await prisma.user.findUnique({ where: { id } });
+    return user;
+  },
+
   createUser: async (username: string, email: string, password: string) => {
     const createdUser = await prisma.user.create({
       data: { username, email, password },
@@ -38,7 +43,19 @@ export const authRepository = {
     return refreshToken;
   },
 
+  findRefreshTokenByUserId: async (userId: string) => {
+    return await prisma.refreshToken.findMany({ where: { userId } });
+  },
+
   deleteRefreshTokenById: async (id: string) => {
     return await prisma.refreshToken.delete({ where: { id } });
+  },
+
+  deleteRefreshTokenByToken: async (token: string) => {
+    return await prisma.refreshToken.delete({ where: { token } });
+  },
+
+  deleteAllRefreshTokenByUser: async (userId: string) => {
+    return await prisma.refreshToken.deleteMany({ where: { userId } });
   },
 };

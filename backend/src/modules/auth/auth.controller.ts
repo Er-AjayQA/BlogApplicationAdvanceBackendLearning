@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { catchAsync } from "../../utils/CatchAsync.js";
 import { authService } from "./auth.service.js";
 import { sendResponse } from "../../utils/sendResponse.js";
@@ -35,6 +35,41 @@ export const refreshTokenController = catchAsync(
       success: true,
       message: "Tokens refreshed successfully",
       data: result,
+    });
+  },
+);
+
+export const currentUserController = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await authService.getCurrentUser(req.userId as string);
+
+    sendResponse(res, 200, {
+      success: true,
+      message: "User detail fetched successfully",
+      data: result,
+    });
+  },
+);
+
+export const logoutController = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { refreshToken } = req.body;
+    const result = await authService.logout(refreshToken);
+
+    sendResponse(res, 200, {
+      success: true,
+      message: "Logged out successfully",
+    });
+  },
+);
+
+export const logoutAllController = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await authService.logoutAllDevices(req.userId as string);
+
+    sendResponse(res, 200, {
+      success: true,
+      message: "Logged out of all devices",
     });
   },
 );
