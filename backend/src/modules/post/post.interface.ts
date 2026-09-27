@@ -9,6 +9,7 @@ export interface IPostRepository {
   ): Promise<any>;
 
   getAllPosts(): Promise<any>;
+  getPostById(postId: string): Promise<any>;
   getPostByPostIdAndUserId(userId: string, postId: string): Promise<any>;
   getPostByUserId(userId: string): Promise<any>;
   updatePost(

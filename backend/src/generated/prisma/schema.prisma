@@ -49,7 +49,7 @@ model Post {
 
 model Comment {
   id      String @id @default(uuid())
-  Comment String
+  comment String
 
   postId String
   userId String

@@ -7,6 +7,7 @@ import {
   updatePostController,
   deletePostController,
   getAllPosts,
+  getPostByIdController,
 } from "./post.controller.js";
 import { verifyUser } from "../../middlewares/auth.middleware.js";
 import { authService } from "../auth/auth.container.js";
@@ -15,6 +16,7 @@ import { upload } from "../../middlewares/multer.middleware.js";
 const router = express.Router();
 
 router.route("/").get(verifyUser(authService), getAllPosts);
+router.route("/:id").get(verifyUser(authService), getPostByIdController);
 
 router
   .route("/create")

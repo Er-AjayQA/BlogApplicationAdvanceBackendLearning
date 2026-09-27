@@ -35,6 +35,19 @@ export const getAllPosts = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+export const getPostByIdController = catchAsync(
+  async (req: Request, res: Response) => {
+    const postId = req.params.id as string;
+    const result = await postService.getPostById(postId);
+
+    sendResponse(res, 200, {
+      success: true,
+      message: "Fetched post successfully",
+      data: result,
+    });
+  },
+);
+
 export const getUserPostsController = catchAsync(
   async (req: Request, res: Response) => {
     const result = await postService.getUserPosts(req.userId as string);
