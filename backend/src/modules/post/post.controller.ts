@@ -34,12 +34,7 @@ export const getAllPosts = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, 200, {
     success: true,
     message: "Get all posts successfully",
-    data: {
-      result,
-      meta: {
-        nextCursor: result.length > 0 ? result[result.length - 1].id : null,
-      },
-    },
+    data: result,
   });
 });
 

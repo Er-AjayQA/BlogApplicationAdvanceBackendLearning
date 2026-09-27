@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { z } from "zod";
+import { AppError } from "../utils/AppError.js";
 
 export const validate =
   (schema: z.ZodObject<any>) =>
@@ -12,10 +13,10 @@ export const validate =
         message: err.message,
       }));
 
-      return res.status(400).json({
-        message: "Validation failed",
-        errors,
-      });
+      throw new AppError(
+        errors.map((e) => `${e.field}: ${e.message}`).join(", "),
+        400,
+      );
     }
 
     if (result.data !== undefined) {

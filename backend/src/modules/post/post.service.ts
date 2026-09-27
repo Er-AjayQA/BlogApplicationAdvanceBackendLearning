@@ -1,10 +1,7 @@
 import { AppError } from "../../utils/AppError.js";
-import {
-  removeFromCloudinary,
-  uploadToCloudinary,
-} from "../../utils/cloudinary.helper.js";
 import { IFileService } from "../../utils/file.interface.js";
 import { IPostRepository } from "./post.interface.js";
+import { toPostItemResponse, toPostListResponse } from "./post.mapper.js";
 import { createPostDTO, updatePostDTO } from "./post.schema.js";
 
 export class PostService {
@@ -33,12 +30,17 @@ export class PostService {
       createdPost = await this.repo.createPost(userId, title, description);
     }
 
-    return createdPost;
+    return toPostItemResponse(createdPost);
   }
 
   async getAllPosts(cursor?: string, limit?: number) {
     const posts = await this.repo.getAllPosts(cursor, limit);
-    return posts;
+    return {
+      posts: toPostListResponse(posts),
+      meta: {
+        nextCursor: posts.length > 0 ? posts[posts.length - 1].id : null,
+      },
+    };
   }
 
   async getPostById(postId: string) {
@@ -48,13 +50,13 @@ export class PostService {
       throw new AppError("Post not found", 404);
     }
 
-    return post;
+    return toPostItemResponse(post);
   }
 
   async getUserPosts(userId: string) {
     const posts = await this.repo.getPostByUserId(userId);
 
-    return posts;
+    return toPostListResponse(posts);
   }
 
   async updatePost(
@@ -78,7 +80,7 @@ export class PostService {
       updatedPost = await this.repo.updatePost(postId, body);
     }
 
-    return post;
+    return toPostItemResponse(post);
   }
 
   async deletePost(postId: string, userId: string) {
