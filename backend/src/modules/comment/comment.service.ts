@@ -25,6 +25,25 @@ export class CommentService {
     return newComment;
   }
 
+  async getCommentsByPostId(
+    postId: string,
+    cursor?: string,
+    limit: number = 10,
+  ) {
+    const post = await this.postRepo.getPostById(postId);
+
+    if (!post) {
+      throw new AppError("Post not found", 404);
+    }
+
+    const comments = await this.commentRepo.getCommentsByPostId(
+      postId,
+      cursor,
+      limit,
+    );
+    return comments;
+  }
+
   async deleteComment(userId: string, commentId: string) {
     const comment = await this.commentRepo.getCommentById(commentId);
 

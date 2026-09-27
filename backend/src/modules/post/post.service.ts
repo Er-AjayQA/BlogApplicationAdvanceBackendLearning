@@ -3,11 +3,15 @@ import {
   removeFromCloudinary,
   uploadToCloudinary,
 } from "../../utils/cloudinary.helper.js";
+import { IFileService } from "../../utils/file.interface.js";
 import { IPostRepository } from "./post.interface.js";
 import { createPostDTO, updatePostDTO } from "./post.schema.js";
 
 export class PostService {
-  constructor(private repo: IPostRepository) {}
+  constructor(
+    private repo: IPostRepository,
+    private fileService: IFileService,
+  ) {}
 
   async createPost(
     userId: string,
@@ -18,7 +22,7 @@ export class PostService {
     let createdPost;
 
     if (localFilePath) {
-      const imageUrl = await uploadToCloudinary(localFilePath);
+      const imageUrl = await this.fileService.upload(localFilePath);
       createdPost = await this.repo.createPost(
         userId,
         title,
@@ -32,8 +36,8 @@ export class PostService {
     return createdPost;
   }
 
-  async getAllPosts() {
-    const posts = await this.repo.getAllPosts();
+  async getAllPosts(cursor?: string, limit?: number) {
+    const posts = await this.repo.getAllPosts(cursor, limit);
     return posts;
   }
 
@@ -68,7 +72,7 @@ export class PostService {
     let updatedPost;
 
     if (localFilePath) {
-      const imageUrl = await uploadToCloudinary(localFilePath);
+      const imageUrl = await this.fileService.upload(localFilePath);
       updatedPost = await this.repo.updatePost(postId, body, imageUrl);
     } else {
       updatedPost = await this.repo.updatePost(postId, body);
@@ -85,7 +89,7 @@ export class PostService {
     }
 
     if (post.imageUrl) {
-      await removeFromCloudinary(post.imageUrl);
+      await this.fileService.remove(post.imageUrl);
     }
 
     await this.repo.deletePost(postId);

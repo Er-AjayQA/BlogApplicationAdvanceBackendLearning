@@ -26,12 +26,20 @@ export const createPostController = catchAsync(
 );
 
 export const getAllPosts = catchAsync(async (req: Request, res: Response) => {
-  const result = await postService.getAllPosts();
+  const { cursor, limit } = req.query;
+  const parsedLimit = limit ? parseInt(limit as string) : 10;
+
+  const result = await postService.getAllPosts(cursor as string, parsedLimit);
 
   sendResponse(res, 200, {
     success: true,
     message: "Get all posts successfully",
-    data: result,
+    data: {
+      result,
+      meta: {
+        nextCursor: result.length > 0 ? result[result.length - 1].id : null,
+      },
+    },
   });
 });
 

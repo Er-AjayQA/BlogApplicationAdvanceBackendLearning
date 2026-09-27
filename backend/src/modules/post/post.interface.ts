@@ -1,3 +1,4 @@
+import { Post } from "@prisma/client";
 import { updatePostDTO } from "./post.schema.js";
 
 export interface IPostRepository {
@@ -6,16 +7,19 @@ export interface IPostRepository {
     title: string,
     description: string,
     imageUrl?: string,
-  ): Promise<any>;
+  ): Promise<Post>;
 
-  getAllPosts(): Promise<any>;
-  getPostById(postId: string): Promise<any>;
-  getPostByPostIdAndUserId(userId: string, postId: string): Promise<any>;
-  getPostByUserId(userId: string): Promise<any>;
+  getAllPosts(cursor?: string, limit?: number): Promise<Post[]>;
+  getPostById(postId: string): Promise<Post | null>;
+  getPostByPostIdAndUserId(
+    userId: string,
+    postId: string,
+  ): Promise<Post | null>;
+  getPostByUserId(userId: string): Promise<Post[]>;
   updatePost(
     postId: string,
     data: updatePostDTO,
     imageUrl?: string,
-  ): Promise<any>;
-  deletePost(postId: string): Promise<any>;
+  ): Promise<Post>;
+  deletePost(postId: string): Promise<void>;
 }
